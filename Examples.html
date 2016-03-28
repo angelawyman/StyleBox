@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        html {
+            display: block;
+            height: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            width: 100%;
+        }
+        body {
+            display: block;
+            background-color: #ffffff;
+            font-family: Arial Bold, arial;
+            font-size: 14px;
+            text-align: center;
+            height: 100%;
+            line-height: normal;
+            margin: 8px;
+            width: 100%;
+        }
+        .button {
+            font-size: 1.1em;
+            font-family: Arial Bold, arial;
+            font-weight: bold;
+            color: #6A6A6A;
+            border-width: 0;
+            background-color: #E6E6E6;
+            margin: 4px 6px 4px 0;
+            cursor: pointer;
+            padding: 8px 12px;
+            min-width: 60px;
+            white-space: nowrap;
+            border-radius: 5;
+            text-align: center;
+            box-shadow: rgba(50,50,50,0.3) -2px -2px 2px inset, rgba(255,255,255,0.5) 2px 2px 2px inset;
+            text-shadow: 0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8);
+        }
+        .section {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 8px;
+            padding: 8px;
+            background-color: black;
+            color: #F6F6F6;
+            cursor: pointer;
+            text-shadow: 0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8);
+            box-shadow: rgba(255,255,255,0.9) 0 5px 20px inset, rgba(255,255,255,0.7) 0 -5px 20px inset;
+        }
+
+    </style>
+</head>
+<body>
+<div class="section">Predefined Alert Types</div>
+<div id="section1">
+    <button id='b1' class='button'>Information Alert</button>
+    <button id='b2' class='button'>Confirmation Alert</button>
+    <button id='b3' class='button'>Error Alert</button>
+    <button id='b4' class='button'>Warning Alert</button>
+    <button id='b5' class='button'>Success Alert</button>
+    <br>
+</div>
+<div class="section">Customizable Buttons with Callback</div>
+<div id="section2">
+    <button id='b6' class='button'>Button Type 1</button>
+    <button id='b7' class='button'>Button Type 2</button>
+    <button id='b8' class='button'>Button Type 3</button>
+    <button id='b9' class='button'>Custom Buttons - Plain</button>
+    <button id='b10' class='button'>Custom Buttons - with Icons</button>
+    <br>
+</div>
+<div class="section">Customizable Title Icons</div>
+<div id="section3">
+    <button id='b11' class='button'>Custom Title Icon</button>
+    <button id='b12' class='button'>Custom Title Icon & Size</button>
+    <button id='b13' class='button'>Custom Title Icon & Color</button>
+</div>
+<div class="section">Predefined Exit Button Styles</div>
+<div id="section4">
+    <button id='b14' class='button'>Corner Exit Button</button>
+    <button id='b15' class='button'>Simple x Exit Button</button>
+    <button id='b16' class='button'>Default Exit Button</button>
+</div>
+<div class="section">Automatic Section & Color Styling</div>
+<div id="section5">
+    <button id='b17' class='button'>Default Auto Style - Lite</button>
+    <button id='b18' class='button'>Default Auto Style - Dark</button>
+    <button id='b19' class='button'>Auto Style Lite Gray - Lite</button>
+    <button id='b20' class='button'>Auto Style Dark Gray - Dark</button>
+</div>
+<div class="section">Custom Styling</div>
+<div id="section6">
+    <button id='b21' class='button'>Header-Footer HSL Percent</button>
+    <button id='b22' class='button'>Header-Footer Color</button>
+    <button id='b23' class='button'>Button Color</button>
+    <button id='b24' class='button'>Button Highlight Color</button>
+    <button id='b25' class='button'>Dialog Box Shadow</button>
+</div>
+<div class="section">Animation Callbacks</div>
+<div id="section7">
+    <button id='b26' class='button'>onOverlay</button>
+    <button id='b27' class='button'>onShow</button>
+    <button id='b28' class='button'>onRenderMsg</button>
+    <button id='b29' class='button'>onBtnHover</button>
+    <button id='b30' class='button'>onCloseHover</button>
+    <button id='b31' class='button'>onHide</button>
+</div>
+<div class="section">Available User Options</div>
+
+
+<link rel="stylesheet" href="Lib/Font%20Awesome/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="styleBox.css" type="text/css">
+<script type="text/javascript" src="Lib/Greensock/TweenMax.min.js"></script>
+<script type="text/javascript" src="Lib/Greensock/SplitText.min.js"></script>
+<script type="text/javascript" src="styleBox.js"></script>
+<script type="text/javascript" src="styleBox.animations.js"></script>
+<script type="text/javascript">
+    var b1 = document.querySelector('#b1'),
+            b2 = document.querySelector('#b2'),
+            b3 = document.querySelector('#b3'),
+            b4 = document.querySelector('#b4'),
+            b5 = document.querySelector('#b5'),
+            b6 = document.querySelector('#b6'),
+            b7 = document.querySelector('#b7'),
+            b8 = document.querySelector('#b8'),
+            b9 = document.querySelector('#b9'),
+            b10 = document.querySelector('#b10'),
+            b11 = document.querySelector('#b11'),
+            b12 = document.querySelector('#b12'),
+            b13 = document.querySelector('#b13'),
+            b14 = document.querySelector('#b14'),
+            b15 = document.querySelector('#b15'),
+            b16 = document.querySelector('#b16'),
+            b17 = document.querySelector('#b17'),
+            b18 = document.querySelector('#b18'),
+            b19 = document.querySelector('#b19'),
+            b20 = document.querySelector('#b20'),
+            b21 = document.querySelector('#b21'),
+            b22 = document.querySelector('#b22');
+            b23 = document.querySelector('#b23');
+            b24 = document.querySelector('#b24');
+            b25 = document.querySelector('#b25');
+            b26 = document.querySelector('#b26');
+            b27 = document.querySelector('#b27');
+            b28 = document.querySelector('#b28');
+            b29 = document.querySelector('#b29');
+            b30 = document.querySelector('#b30');
+            b31 = document.querySelector('#b31');
+
+        [].forEach.call(document.querySelectorAll(".button"), function(el,i){
+            el.animation = TweenLite.to(el, 0.3, {
+                css : {
+                    color : "ffffff",
+                    fontWeight : "bold",
+                    backgroundColor : "#B18D89",
+                    boxShadow : "rgba(50,50,50,0.3) -1px -1px 1px inset, rgba(255,255,255,0.5) 1px 1px 1px inset",
+                    textShadow : "0px -1px 0px rgba(255,255,255,.6),0px 1px 0px rgba(000,000,000,0.2)"
+                },
+                ease : Linear.easeNone,
+                paused : true
+            });
+
+            el.addEventListener("mouseenter", function () {
+                el.animation.play();
+            });
+            el.addEventListener("mouseleave", function () {
+                el.animation.reverse();
+            });
+
+
+         });
+
+    b1.addEventListener("click", function () {
+        StyleBox.modal("This is the standard info box.", {
+            alertType:['info']
+        });
+    });
+    b2.addEventListener("click", function () {
+        StyleBox.modal("This is the standard confirm box with auto-footer.", {
+            alertType:['confirm'],
+            style: {
+                custom: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b3.addEventListener("click", function () {
+        StyleBox.modal("This is the standard error box with stripes, auto-footer.", {
+            alertType:['error', 'striped'],
+            style: {
+                custom: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b4.addEventListener("click", function () {
+        StyleBox.modal("This is the standard warning box with dark theme, stripes, auto-footer.", {
+            alertType:['warning', 'striped'],
+            style: {
+                custom: true,
+                colorScheme: 'dark',
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b5.addEventListener("click", function () {
+        StyleBox.modal("This is the standard success box with dark theme, stripes.", {
+            alertType:['success', 'striped'],
+            style: {
+                custom: true,
+                colorScheme: 'dark'
+            }
+        });
+    });
+    b6.addEventListener("click", function () {
+        StyleBox.modal("Button type 1 dialog with auto-footer, onClose callback.", {
+            buttons: [1],
+            title: "Button Type 1",
+            onClose: function(caption) {showResult(caption);},
+            style: {
+                custom: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b7.addEventListener("click", function () {
+        StyleBox.modal("Button type 2 dialog with auto-header, auto-footer, onClose callback.", {
+            buttons: [2],
+            title: "Button Type 2",
+            onClose: function(caption) {showResult(caption);},
+            style: {  //Style overrides.
+                custom: true,
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b8.addEventListener("click", function () {
+        StyleBox.modal("Button type 3 dialog with dark color scheme, auto-header, auto-footer, onClose callback.", {
+            buttons: [3],
+            title: "Button Type 3",
+            onClose: function(caption) {showResult(caption);},
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b9.addEventListener("click", function () {
+        StyleBox.modal("Custom buttons with auto-header, auto-footer, onClose callback.", {
+            buttons: [4,["Custom1","Custom2","Custom3"]],
+            title: "Button Type 4 - Custom",
+            onClose: function(caption) {showResult(caption);},
+            style: {  //Style overrides.
+                custom: true,
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    });
+    b10.addEventListener("click", function () {
+        StyleBox.modal("Custom buttons with custom icons, dark color scheme, auto-header, auto-footer, onClose callback.", {
+            buttons: [4,[["Custom1", "fa fa-envelope-o", "#DF042E"], ["Custom2", "fa fa-credit-card", "#889DCA"], ["Custom3", "fa fa-gears"]]],
+            title: "Button Type 4 - Custom",
+            onClose: function(caption) {showResult(caption);},
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true,
+                bgColor: '#947672'
+            }
+        });
+    });
+    b11.addEventListener("click", function () {
+        StyleBox.modal("Custom title icon with lite color scheme.", {
+            title: "Custom Title Icon",
+            icon: ["custom","fa fa-asterisk"],
+            style: {  //Style overrides.
+                custom: true,
+                hasHeaderColor: true,
+                hasHeaderSep: true
+            }
+        });
+    });
+    b12.addEventListener("click", function () {
+        StyleBox.modal("Custom title icon & size with dark color scheme.", {
+            title: "Custom Title Icon & Size",
+            icon: ["custom","fa fa-bar-chart"],
+            iconStyle: ["50px"],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true
+            }
+        });
+    });
+    b13.addEventListener("click", function () {
+        StyleBox.modal("Custom title icon & icon color with dark color scheme.", {
+            title: "Custom Title Icon & Color",
+            icon: ["custom","fa fa-calendar"],
+            iconStyle: ["fa-lg","#AA797D"],
+            borderRadius:[10],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true
+            }
+        });
+    });
+    b14.addEventListener("click", function () {
+        StyleBox.modal("Corner exit button optional style.", {
+            title: "Corner Exit Button",
+            exitBtnStyle: "corner",
+            borderRadius:[10],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                buttonHighColor: '#B18D89'
+            }
+        });
+    });
+    b15.addEventListener("click", function () {
+        StyleBox.modal("Simple x exit button optional style.", {
+            title: "SimpleX Exit Button",
+            exitBtnStyle: "simpleX",
+            borderRadius:[10],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                buttonHighColor: '#B18D89'
+            }
+        });
+    });
+    b16.addEventListener("click", function () {
+        StyleBox.modal("Default circle button style.", {
+            title: "Circle Exit Button",
+            exitBtnStyle: "circle",
+            borderRadius:[10],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                buttonHighColor: '#B18D89'
+            }
+        });
+    });
+    b17.addEventListener("click", function () {
+        StyleBox.modal("Default Auto Styling of header, footer, & buttons using lite scheme", {
+            title: "Default Auto Styling - Lite",
+            borderRadius:[0],
+            icon: ["custom","fa fa-car"]
+        });
+    });
+    b18.addEventListener("click", function () {
+        StyleBox.modal("Default Auto Styling of header, footer, & buttons using dark scheme", {
+            title: "Default Auto Styling - Dark",
+            borderRadius:[0],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark'
+            },
+            icon: ["custom","fa fa-car"]
+        });
+    });
+    b19.addEventListener("click", function () {
+        StyleBox.modal("Auto Styling of header, footer, & buttons using lite scheme", {
+            title: "Auto Styling - Lite",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'lite',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true,
+                bgColor: '#E4E4E4'
+            },
+            icon: ["custom","fa fa-car"]
+        });
+    });
+    b20.addEventListener("click", function () {
+        StyleBox.modal("Auto Styling of header, footer, & buttons using dark scheme", {
+            title: "Auto Styling - Dark",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true,
+                bgColor: '#565656'
+            },
+            icon: ["custom","fa fa-car"]
+        });
+    });
+    b21.addEventListener("click", function () {
+        StyleBox.modal("Custom styling - Changing the automatic header & footer styling by changing the HSL percent.", {
+            title: "Custom Styling - HSL Percent",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'lite',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true,
+                headerColorHsl: '-=15',
+                headerSepHsl: '-=20',
+                footerColorHsl: '-=25',
+                footerSepHsl: '-=30'
+            }
+        });
+    });
+    b22.addEventListener("click", function () {
+        StyleBox.modal("Custom styling - Overriding the automatic header & footer styling by specifying the color.", {
+            title: "Custom Styling - Header & Footer Color",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                hasHeaderColor: true,
+                hasHeaderSep: true,
+                hasFooterColor: true,
+                hasFooterSep: true,
+                headerColor: '#94696D',
+                headerSepColor: '#805B5F',
+                footerColor: '#383838',
+                footerSepColor: '#2A2A2A'
+
+            }
+        });
+    });
+    b23.addEventListener("click", function () {
+        StyleBox.modal("Custom styling - Overriding the automatic button color by specifying the color.", {
+            title: "Custom Styling - Button Color",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                buttonColor: '#AA797D'
+            }
+        });
+    });
+    b24.addEventListener("click", function () {
+        StyleBox.modal("Custom styling - Overriding the automatic button highlight color by specifying the color.", {
+            title: "Custom Styling - Button Highlight",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                colorScheme: 'dark',
+                buttonHighColor: '#AA797D'
+            }
+        });
+    });
+    b25.addEventListener("click", function () {
+        StyleBox.modal("Custom styling - Changing the box shadow for the dialog.", {
+            title: "Custom Styling - Box Shadow",
+            borderRadius:[8],
+            style: {  //Style overrides.
+                custom: true,
+                bxSh: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+            }
+        });
+    });
+    b26.addEventListener("click", function () {
+        StyleBox.modal("Callback animation when the overlay is displayed.", {
+            title: "onOverlay Callback",
+            onOverlay: StyleBox.animation.onOverlay.pulse
+        });
+    });
+    b27.addEventListener("click", function () {
+        StyleBox.modal("Callback animation when the Dialog is displayed.", {
+            title: "onShow Callback",
+            onShow: StyleBox.animation.onShow.slideTop
+        });
+    });
+    b28.addEventListener("click", function () {
+        StyleBox.modal("Callback animation when the message text is displayed.", {
+            title: "onRenderMsg Callback",
+            onRenderMsg: StyleBox.animation.onRenderMsg.splitRoll
+        });
+    });
+    b29.addEventListener("click", function () {
+        StyleBox.modal("Callback animation on button hover.", {
+            title: "onBtnHover Callback",
+            onBtnHover: StyleBox.animation.onBtnHover.buttonHighlight
+        });
+    });
+    b30.addEventListener("click", function () {
+        StyleBox.modal("Callback animation on exit button hover.", {
+            title: "onCloseHover Callback",
+            onCloseHover: StyleBox.animation.onCloseHover.buttonHighlight
+        });
+    });
+    b31.addEventListener("click", function () {
+        StyleBox.modal("Callback animation just before the dialog is closed.", {
+            title: "onHide Callback",
+            onHide: StyleBox.animation.onHide.slideDown
+        });
+    });
+
+
+    // function to show results of any onClose callbacks
+    function showResult(caption) {
+        StyleBox.modal("The " + caption + " button was clicked.", {
+            alertType:['info', 'striped'],
+            style: {
+                custom: true,
+                colorScheme: 'dark',
+                hasFooterColor: true,
+                hasFooterSep: true
+            }
+        });
+    }
+</script>
+</body>
+</html>
