@@ -35,10 +35,10 @@
             padding: 8px 12px;
             min-width: 60px;
             white-space: nowrap;
-            border-radius: 5;
+            border-radius: 5px;
             text-align: center;
             box-shadow: rgba(50,50,50,0.3) -2px -2px 2px inset, rgba(255,255,255,0.5) 2px 2px 2px inset;
-            text-shadow: 0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8);
+            text-shadow: 0 -1px 0 rgba(000,000,000,0.2),0 1px 0 rgba(255,255,255,.8);
         }
         .section {
             font-size: 18px;
@@ -48,7 +48,7 @@
             background-color: black;
             color: #F6F6F6;
             cursor: pointer;
-            text-shadow: 0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8);
+            text-shadow: 0 -1px 0 rgba(255,255,255,0.2),0 1px 0 rgba(000,000,000,.8);
             box-shadow: rgba(255,255,255,0.9) 0 5px 20px inset, rgba(255,255,255,0.7) 0 -5px 20px inset;
         }
 
@@ -109,7 +109,11 @@
     <button id='b30' class='button'>onCloseHover</button>
     <button id='b31' class='button'>onHide</button>
 </div>
-<div class="section">Available User Options</div>
+<div class="section">Injectable HTML</div>
+<div id="section8">
+    <button id='b32' class='button'>HTML Message Text</button>
+    <button id='b33' class='button'>HTML Callback Function</button>
+</div>
 
 
 <link rel="stylesheet" href="Lib/Font%20Awesome/css/font-awesome.min.css" type="text/css">
@@ -140,18 +144,20 @@
             b19 = document.querySelector('#b19'),
             b20 = document.querySelector('#b20'),
             b21 = document.querySelector('#b21'),
-            b22 = document.querySelector('#b22');
-            b23 = document.querySelector('#b23');
-            b24 = document.querySelector('#b24');
-            b25 = document.querySelector('#b25');
-            b26 = document.querySelector('#b26');
-            b27 = document.querySelector('#b27');
-            b28 = document.querySelector('#b28');
-            b29 = document.querySelector('#b29');
-            b30 = document.querySelector('#b30');
-            b31 = document.querySelector('#b31');
+            b22 = document.querySelector('#b22'),
+            b23 = document.querySelector('#b23'),
+            b24 = document.querySelector('#b24'),
+            b25 = document.querySelector('#b25'),
+            b26 = document.querySelector('#b26'),
+            b27 = document.querySelector('#b27'),
+            b28 = document.querySelector('#b28'),
+            b29 = document.querySelector('#b29'),
+            b30 = document.querySelector('#b30'),
+            b31 = document.querySelector('#b31'),
+            b32 = document.querySelector('#b32'),
+            b33 = document.querySelector('#b33');
 
-        [].forEach.call(document.querySelectorAll(".button"), function(el,i){
+        [].forEach.call(document.querySelectorAll(".button"), function(el){
             el.animation = TweenLite.to(el, 0.3, {
                 css : {
                     color : "ffffff",
@@ -519,6 +525,18 @@
             onHide: StyleBox.animation.onHide.slideDown
         });
     });
+    b32.addEventListener("click", function () {
+        StyleBox.modal('<span class="fa-stack fa-lg"><i class="fa fa-camera fa-stack-1x"></i><font color=#ff0000><i class="fa fa-ban fa-stack-2x text-danger"></i></span><p>This is a custom HTML <font color=#ff0000 size=5><strong>message</strong></font> with a font-awesome icon.</p>', {
+            title: "HTML Message Text"
+
+        });
+    });
+    b33.addEventListener("click", function () {
+        StyleBox.modal({
+            title: "HTML Callback Function",
+            message: function() {return getCallbackHtml();}
+        });
+    });
 
 
     // function to show results of any onClose callbacks
@@ -533,6 +551,13 @@
             }
         });
     }
+
+    function getCallbackHtml() {
+        var myHtml = '';
+        myHtml = '<span class="fa-stack fa-lg"><i class="fa fa-camera fa-stack-1x"></i><font color=#ff0000><i class="fa fa-ban fa-stack-2x text-danger"></i></span><p>This is a custom HTML <font color=#ff0000 size=5><strong>message</strong></font> with a font-awesome icon generated from a callback function.</p>';
+        return myHtml;
+    }
+
 </script>
 </body>
 </html>

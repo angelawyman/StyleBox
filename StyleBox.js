@@ -34,6 +34,7 @@ var StyleBox = StyleBox || {};
             sty = styles,  //Object that defines the default syles used herein.
             Sb,  //Constructor for StyleBox Objects.
             autoStyle = {},  //Object that defines the auto-styling available to certain animation callbacks.
+            msg,
             n,
             start,  //=====> REMOVE <=====
             end,  //=====> REMOVE <=====
@@ -49,6 +50,7 @@ var StyleBox = StyleBox || {};
                 message: null, //Message text or callback to function with contents of message.  Use '|' for line break.
                 overlayClose: true,  //Whether or not clicking on overlay closes dialog.
                 overlayOpacity: .4,
+                parent: document.body,  //parent object of dialog box and overlay.
                 style: {  //Style overrides.  See website for possible values.
                     custom: false,
                     colorScheme: 'lite',
@@ -140,7 +142,7 @@ var StyleBox = StyleBox || {};
             /* =====> OVERLAY <===== */
             dlg.overlay = new Sb().cls("MsgOverlay").css({
                 "opacity": set.overlayOpacity
-            }).append(document.body);
+            }).append(set.parent);
 
             if (set.overlayClose) {
                 dlg.overlay.addEventListener("click", function () {
@@ -149,7 +151,7 @@ var StyleBox = StyleBox || {};
             }
 
             /* =====> DIALOG <===== */
-            dlg.dialog = new Sb().cls("StyleBox").append(document.body);
+            dlg.dialog = new Sb().cls("StyleBox").append(set.parent);
             dlg.top = new Sb().append(dlg.dialog);
             dlg.title = new Sb().cls("MsgTitle").append(dlg.top);
             dlg.xClose = new Sb().cls("MsgClose").append(dlg.top);
@@ -190,19 +192,26 @@ var StyleBox = StyleBox || {};
             }
 
             /* =====> MESSAGE <===== */
+            if (typeof set.message === 'function') {
+                msg = hlp.htmlEscape(set.message());
+                console.log("msg:");
+                console.log(msg);
+                dlg.msgText = new Sb("span").cls("MsgText").html(hlp.htmlUnescape(msg)).append(dlg.body);
 
-            /* =====> TEXT MULTI-LINE? <===== */
-            if (set.message.search("|") !== -1) {
-                var myMsg = set.message.split("|"),
-                    tempTxt = '',
-                    i = 0;
-                while (i < myMsg.length) {
-                    tempTxt += myMsg[i] + '<br>';
-                    i += 1;
-                }
-                dlg.msgText = new Sb("span").cls("MsgText").html(tempTxt).append(dlg.body);
             } else {
-                dlg.msgText = new Sb("span").cls("MsgText").html(set.message).append(dlg.body);
+                /* =====> TEXT MULTI-LINE? <===== */
+                if (set.message.search("|") !== -1) {
+                    var myMsg = set.message.split("|"),
+                        tempTxt = '',
+                        i = 0;
+                    while (i < myMsg.length) {
+                        tempTxt += myMsg[i] + '<br>';
+                        i += 1;
+                    }
+                    dlg.msgText = new Sb("span").cls("MsgText").html(tempTxt).append(dlg.body);
+                } else {
+                    dlg.msgText = new Sb("span").cls("MsgText").html(set.message).append(dlg.body);
+                }
             }
 
             /* =====> BUTTONS <===== */
@@ -396,7 +405,6 @@ var StyleBox = StyleBox || {};
 
                 return obj3;
             },
-
 
         /* =====> generateButtons FUNCTION <===== */
             generateButtons = function () {
@@ -994,6 +1002,24 @@ var StyleBox = StyleBox || {};
                         el.style[prop] = obj[prop];
                     }
                 }
+            };
+
+            this.htmlEscape = function(str) {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            };
+
+            this.htmlUnescape = function(value) {
+                return String(value)
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#39;/g, "'")
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    .replace(/&amp;/g, '&');
             };
 
             return this;
