@@ -1,3 +1,10 @@
+/* ##########################################################
+ * StyleBox.css
+ * @version 1.1.0
+ * created by James S. Hackney
+ * copyright 2016 by db6 Software
+ * GIT URL - https://github.com/dbs6/stylebox
+ * ########################################################## */
 
 .StyleBox {
     background-color: #ffffff; /* user option (do not change) */
@@ -186,11 +193,12 @@
     color: #f25858;
 }
 
+/* for release 1.1.1
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(Lib/Material%20Design%20Icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: url(Lib/Material%20Design%20Icons/iconfont/MaterialIcons-Regular.eot);
     src: local('Material Icons'),
     local('MaterialIcons-Regular'),
     url(Lib/Material%20Design%20Icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
@@ -202,7 +210,7 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 24px;
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -211,14 +219,15 @@
     white-space: nowrap;
     direction: ltr;
 
-    /* Support for all WebKit browsers. */
+    /* Support for all WebKit browsers.
     -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
+    /* Support for Safari and Chrome.
     text-rendering: optimizeLegibility;
 
-    /* Support for Firefox. */
+    /* Support for Firefox.
     -moz-osx-font-smoothing: grayscale;
 
-    /* Support for IE. */
+    /* Support for IE.
     font-feature-settings: 'liga';
 }
+*/

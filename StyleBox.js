@@ -1,6 +1,6 @@
 /* ##########################################################
  * StyleBox.js
- * @version 1.1
+ * @version 1.1.0
  * created by James S. Hackney
  * copyright 2016 by db6 Software
  * GIT URL - https://github.com/dbs6/stylebox
@@ -12,9 +12,7 @@
  * 2. The value of undefined is guaranteed as being truly
  * Undefined. This is to avoid issues with undefined being
  * Mutable pre-ES5.
- * ##########################################################
- */
-
+ * ########################################################## */
 
 var StyleBox = StyleBox || {};
 
@@ -696,10 +694,10 @@ var StyleBox = StyleBox || {};
 
                 // Assign default styling to css object
                 var css = {};
-                css = hlp.extend(css, sty.default);
+                css = hlp.extend(css, sty.def);
 
                 // set autostyle used by animations
-                autoStyle = hlp.extend(autoStyle, sty.default.autostyle);
+                autoStyle = hlp.extend(autoStyle, sty.def.autostyle);
 
                 // render custom style *********************
                 if (set.style.custom) {
@@ -709,7 +707,7 @@ var StyleBox = StyleBox || {};
                     if (set.style.colorScheme === 'dark') {
 
                         // set the default changes to color scheme
-                        css = hlp.extend(css, sty.darkDefault);
+                        css = hlp.extend(css, sty.darkDef);
 
                         // set the related background colors for auto styling
                         if (!hasStyleProp("bgColor")) {
@@ -720,7 +718,7 @@ var StyleBox = StyleBox || {};
                         setHeaderFooter(hf, "dark");
 
                         // set autostyle used by animations
-                        autoStyle = hlp.extend(autoStyle, sty.darkDefault.autostyle);
+                        autoStyle = hlp.extend(autoStyle, sty.darkDef.autostyle);
 
                         // render lite style *********************
                     } else {
@@ -1036,53 +1034,53 @@ var StyleBox = StyleBox || {};
             var self = this;
 
             // Default Auto Styling - General
-            this.default = {};
-            this.default.StyleBox = {};
-            this.default.MsgButton = {};
-            this.default.MsgClose = {};
-            this.default.MsgTitle = {};
-            this.default.MsgText = {};
-            this.default.MsgOverlay = {};
-            this.default.StyleBox.boxShadow = "rgba(0, 0, 0, 1) 0px 0px 6px -1px, rgba(0,0,0,0.5) 8px 8px 15px";
-            this.default.MsgButton.boxShadow = "rgba(50,50,50,0.3) -2px -2px 2px inset, rgba(255,255,255,0.5) 2px 2px 2px inset, rgba(0,0,0,0.1) -1px -1px 1px";
-            this.default.MsgButton.textShadow = "0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8)";
-            this.default.MsgButton.backgroundColor = "hsl(+=0, +=0%, -=10%)";
-            this.default.MsgButton.highColor = "hsl(+=0, +=0%, -=15%)";
-            this.default.MsgButton.borderColor = "hsl(+=0, +=0%, -=15%)";
-            this.default.MsgButton.color = "#6A6A6A";
-            this.default.MsgClose.boxShadow = "rgba(50,50,50,0.3) -1px -1px 1px inset, rgba(255,255,255,0.5) 1px 1px 1px inset, rgba(0,0,0,0.5) 8px 0px 15px, rgba(0,0,0,0.5) -1px 0px 6px";
-            this.default.MsgClose.textShadow = "0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8)";
-            this.default.MsgClose.backgroundColor = "hsl(+=0, +=0%, -=5%)";
-            this.default.MsgClose.borderColor = "hsl(+=0, +=0%, -=10%)";
-            this.default.MsgClose.color = "#6A6A6A";
-            this.default.MsgTitle.color = "#000000";
-            this.default.MsgText.color = "#000000";
-            this.default.MsgOverlay.background = "#000000";
+            this.def = {};
+            this.def.StyleBox = {};
+            this.def.MsgButton = {};
+            this.def.MsgClose = {};
+            this.def.MsgTitle = {};
+            this.def.MsgText = {};
+            this.def.MsgOverlay = {};
+            this.def.StyleBox.boxShadow = "rgba(0, 0, 0, 1) 0px 0px 6px -1px, rgba(0,0,0,0.5) 8px 8px 15px";
+            this.def.MsgButton.boxShadow = "rgba(50,50,50,0.3) -2px -2px 2px inset, rgba(255,255,255,0.5) 2px 2px 2px inset, rgba(0,0,0,0.1) -1px -1px 1px";
+            this.def.MsgButton.textShadow = "0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8)";
+            this.def.MsgButton.backgroundColor = "hsl(+=0, +=0%, -=10%)";
+            this.def.MsgButton.highColor = "hsl(+=0, +=0%, -=15%)";
+            this.def.MsgButton.borderColor = "hsl(+=0, +=0%, -=15%)";
+            this.def.MsgButton.color = "#6A6A6A";
+            this.def.MsgClose.boxShadow = "rgba(50,50,50,0.3) -1px -1px 1px inset, rgba(255,255,255,0.5) 1px 1px 1px inset, rgba(0,0,0,0.5) 8px 0px 15px, rgba(0,0,0,0.5) -1px 0px 6px";
+            this.def.MsgClose.textShadow = "0px -1px 0px rgba(000,000,000,0.2),0px 1px 0px rgba(255,255,255,.8)";
+            this.def.MsgClose.backgroundColor = "hsl(+=0, +=0%, -=5%)";
+            this.def.MsgClose.borderColor = "hsl(+=0, +=0%, -=10%)";
+            this.def.MsgClose.color = "#6A6A6A";
+            this.def.MsgTitle.color = "#000000";
+            this.def.MsgText.color = "#000000";
+            this.def.MsgOverlay.background = "#000000";
 
             // Dark Auto Styling - General
-            this.darkDefault = {};
-            this.darkDefault.StyleBox = {};
-            this.darkDefault.MsgButton = {};
-            this.darkDefault.MsgClose = {};
-            this.darkDefault.MsgTitle = {};
-            this.darkDefault.MsgText = {};
-            this.darkDefault.MsgOverlay = {};
-            this.darkDefault.StyleBox.backgroundColor = "#000000";
-            this.darkDefault.StyleBox.borderColor = "#000000";
-            this.darkDefault.MsgButton.boxShadow = "rgba(50,50,50,0.5) -2px -2px 2px inset, rgba(255,255,255,0.3) 2px 2px 2px inset, rgba(255,255,255,0.1) 1px 1px 1px";
-            this.darkDefault.MsgButton.textShadow = "0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8)";
-            this.darkDefault.MsgButton.backgroundColor = "hsl(+=0, +=0%, +=15%)";
-            this.darkDefault.MsgButton.highColor = "hsl(+=0, +=0%, +=20%)";
-            this.darkDefault.MsgButton.borderColor = "hsl(+=0, +=0%, +=20%)";
-            this.darkDefault.MsgButton.color = "#F6F6F6";
-            this.darkDefault.MsgClose.boxShadow = "rgba(50,50,50,0.5) -1px -1px 1px 0px inset, rgba(255,255,255,0.3) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 8px 0px 15px, rgba(0,0,0,0.5) -1px 0px 6px 0px";
-            this.darkDefault.MsgClose.textShadow = "0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8)";
-            this.darkDefault.MsgClose.backgroundColor = "hsl(+=0, +=0%, +=15%)";
-            this.darkDefault.MsgClose.borderColor = "hsl(+=0, +=0%, +=20%)";
-            this.darkDefault.MsgClose.color = "#F6F6F6";
-            this.darkDefault.MsgTitle.color = "#ffffff";
-            this.darkDefault.MsgText.color = "#ffffff";
-            this.darkDefault.MsgOverlay.background = "#ffffff";
+            this.darkDef = {};
+            this.darkDef.StyleBox = {};
+            this.darkDef.MsgButton = {};
+            this.darkDef.MsgClose = {};
+            this.darkDef.MsgTitle = {};
+            this.darkDef.MsgText = {};
+            this.darkDef.MsgOverlay = {};
+            this.darkDef.StyleBox.backgroundColor = "#000000";
+            this.darkDef.StyleBox.borderColor = "#000000";
+            this.darkDef.MsgButton.boxShadow = "rgba(50,50,50,0.5) -2px -2px 2px inset, rgba(255,255,255,0.3) 2px 2px 2px inset, rgba(255,255,255,0.1) 1px 1px 1px";
+            this.darkDef.MsgButton.textShadow = "0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8)";
+            this.darkDef.MsgButton.backgroundColor = "hsl(+=0, +=0%, +=15%)";
+            this.darkDef.MsgButton.highColor = "hsl(+=0, +=0%, +=20%)";
+            this.darkDef.MsgButton.borderColor = "hsl(+=0, +=0%, +=20%)";
+            this.darkDef.MsgButton.color = "#F6F6F6";
+            this.darkDef.MsgClose.boxShadow = "rgba(50,50,50,0.5) -1px -1px 1px 0px inset, rgba(255,255,255,0.3) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 8px 0px 15px, rgba(0,0,0,0.5) -1px 0px 6px 0px";
+            this.darkDef.MsgClose.textShadow = "0px -1px 0px rgba(255,255,255,0.2),0px 1px 0px rgba(000,000,000,.8)";
+            this.darkDef.MsgClose.backgroundColor = "hsl(+=0, +=0%, +=15%)";
+            this.darkDef.MsgClose.borderColor = "hsl(+=0, +=0%, +=20%)";
+            this.darkDef.MsgClose.color = "#F6F6F6";
+            this.darkDef.MsgTitle.color = "#ffffff";
+            this.darkDef.MsgText.color = "#ffffff";
+            this.darkDef.MsgOverlay.background = "#ffffff";
 
             // Dark Auto Styling - Header & Footer
             this.dark = {};
@@ -1123,26 +1121,26 @@ var StyleBox = StyleBox || {};
             this.lite.ftrSepHsl.MsgBottom.borderTopColor = "hsl(+=0, +=0%, -=10%)";
 
             // Default Auto Styling - Animation Hover Effects
-            this.default.autostyle = {};
-            this.default.autostyle.textColorButton = "#FFFFFF";
-            this.default.autostyle.textColorClose = "#FFFFFF";
-            this.default.autostyle.textShadowButton = "0px -1px 0px rgba(255,255,255,.6),0px 1px 0px rgba(000,000,000,0.2)";
-            this.default.autostyle.textShadowClose = "0px -1px 0px rgba(255,255,255,.6),0px 1px 0px rgba(000,000,000,0.2)";
-            this.default.autostyle.boxShadowButton = "rgba(50,50,50,0.3) -1px -1px 1px inset, rgba(255,255,255,0.5) 1px 1px 1px inset, rgba(0,0,0,0.1) -1px -1px 1px";
-            this.default.autostyle.boxShadowClose = "rgba(50,50,50,0.0) -1px -1px 1px 0px inset, rgba(50,50,50,0.3) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 4px 0px 10px, rgba(0,0,0,0.0) -1px 0px 6px 0px";
-            this.default.autostyle.highColorButton = "hsl(+=0, +=0%, -=15%)";
-            this.default.autostyle.highColorClose = "hsl(+=0, +=0%, -=15%)";
+            this.def.autostyle = {};
+            this.def.autostyle.textColorButton = "#FFFFFF";
+            this.def.autostyle.textColorClose = "#FFFFFF";
+            this.def.autostyle.textShadowButton = "0px -1px 0px rgba(255,255,255,.6),0px 1px 0px rgba(000,000,000,0.2)";
+            this.def.autostyle.textShadowClose = "0px -1px 0px rgba(255,255,255,.6),0px 1px 0px rgba(000,000,000,0.2)";
+            this.def.autostyle.boxShadowButton = "rgba(50,50,50,0.3) -1px -1px 1px inset, rgba(255,255,255,0.5) 1px 1px 1px inset, rgba(0,0,0,0.1) -1px -1px 1px";
+            this.def.autostyle.boxShadowClose = "rgba(50,50,50,0.0) -1px -1px 1px 0px inset, rgba(50,50,50,0.3) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 4px 0px 10px, rgba(0,0,0,0.0) -1px 0px 6px 0px";
+            this.def.autostyle.highColorButton = "hsl(+=0, +=0%, -=15%)";
+            this.def.autostyle.highColorClose = "hsl(+=0, +=0%, -=15%)";
 
             // Dark Auto Styling - Animation Hover Effects
-            this.darkDefault.autostyle = {};
-            this.darkDefault.autostyle.textColorButton = "#000000";
-            this.darkDefault.autostyle.textColorClose = "#000000";
-            this.darkDefault.autostyle.textShadowButton = "0px -1px 0px rgba(000,000,000,.6),0px 1px 0px rgba(255,255,255,0.2)";
-            this.darkDefault.autostyle.textShadowClose = "0px -1px 0px rgba(000,000,000,.6),0px 1px 0px rgba(255,255,255,0.2)";
-            this.darkDefault.autostyle.boxShadowButton = "rgba(50,50,50,0.5) -1px -1px 1px inset, rgba(255,255,255,0.3) 1px 1px 1px inset, rgba(255,255,255,0.1) 1px 1px 1px";
-            this.darkDefault.autostyle.boxShadowClose = "rgba(50,50,50,0.0) -1px -1px 1px 0px inset, rgba(50,50,50,0.5) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 4px 0px 10px, rgba(0,0,0,0.0) -1px 0px 6px 0px";
-            this.darkDefault.autostyle.highColorButton = "hsl(+=0, +=0%, +=20%)";
-            this.darkDefault.autostyle.highColorClose = "hsl(+=0, +=0%, +=20%)";
+            this.darkDef.autostyle = {};
+            this.darkDef.autostyle.textColorButton = "#000000";
+            this.darkDef.autostyle.textColorClose = "#000000";
+            this.darkDef.autostyle.textShadowButton = "0px -1px 0px rgba(000,000,000,.6),0px 1px 0px rgba(255,255,255,0.2)";
+            this.darkDef.autostyle.textShadowClose = "0px -1px 0px rgba(000,000,000,.6),0px 1px 0px rgba(255,255,255,0.2)";
+            this.darkDef.autostyle.boxShadowButton = "rgba(50,50,50,0.5) -1px -1px 1px inset, rgba(255,255,255,0.3) 1px 1px 1px inset, rgba(255,255,255,0.1) 1px 1px 1px";
+            this.darkDef.autostyle.boxShadowClose = "rgba(50,50,50,0.0) -1px -1px 1px 0px inset, rgba(50,50,50,0.5) 1px 1px 1px 0px inset, rgba(0,0,0,0.5) 4px 0px 10px, rgba(0,0,0,0.0) -1px 0px 6px 0px";
+            this.darkDef.autostyle.highColorButton = "hsl(+=0, +=0%, +=20%)";
+            this.darkDef.autostyle.highColorClose = "hsl(+=0, +=0%, +=20%)";
 
             return this;
         }
