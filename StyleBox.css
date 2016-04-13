@@ -23,7 +23,7 @@
 
 .MsgTop, .MsgAlert {
     text-align: left;
-    padding: 6px;
+    padding: 8px;
     overflow: hidden; /* required (do not change) */
     border-radius: 0 0 0 0; /* user option (do not change) */
     border-bottom: 1px solid #ffffff; /* user option (do not change) */
