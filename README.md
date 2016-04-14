@@ -5,17 +5,19 @@ A robust modal dialog box plugin written in javascript that is easy to style and
 
 #Webpage
 
-http://www.dbs6.com/stylebox
-
+http://dbs6.github.io/StyleBox/
 
 #Getting Started
 
+http://dbs6.github.io/StyleBox/
 
 #Documentation
 
+http://dbs6.github.io/StyleBox/
 
 #Examples
 
+http://dbs6.github.io/StyleBox/
 
 #License
 
