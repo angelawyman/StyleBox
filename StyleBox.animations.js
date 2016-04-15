@@ -87,6 +87,7 @@ var StyleBox = StyleBox || {};
             };
 
             //onRenderMsg *********************************************
+            /*  If you would like to use SplitText as demonstrated on our examples page, you must obtain a license at "http://greensock.com/club/" */
             this.onRenderMsg.splitRoll = function (el) {
                 var
                     split = new SplitText(el, {
