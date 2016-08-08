@@ -145,8 +145,8 @@ var StyleBox = StyleBox || {};
                     ease: Linear.easeNone,
                     paused: true
                 });
-                console.log("Data");
-                console.log(data);
+                //console.log("Data");
+                //console.log(data);
                 return tween;
             };
 

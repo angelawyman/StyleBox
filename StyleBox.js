@@ -1,6 +1,6 @@
 /* ##########################################################
  * StyleBox.js
- * @version 1.1.0
+ * @version 1.1.1
  * created by James S. Hackney
  * copyright 2016 by db6 Software
  * GIT URL - https://github.com/dbs6/stylebox
@@ -34,9 +34,6 @@ var StyleBox = StyleBox || {};
             autoStyle = {},  //Object that defines the auto-styling available to certain animation callbacks.
             msg,
             n,
-            start,  //=====> REMOVE <=====
-            end,  //=====> REMOVE <=====
-            time,  //=====> REMOVE <=====
             defaults = {
                 alertType: ['none'], // [ 'none'||'warning'||'info'||'confirm'||'error'||'question'||'success'||'danger' , 'striped']
                 borderRadius: [10], // [outer radius , button radius]
@@ -78,11 +75,11 @@ var StyleBox = StyleBox || {};
             options = hlp.extend(options, (typeof arguments[0] === 'object' ? arguments[0] : arguments[1]));
         }
 
-        console.log("options");
-        console.log(options);
+        //console.log("options");
+        //console.log(options);
 
-        console.log("defaults");
-        console.log(defaults);
+        //console.log("defaults");
+        //console.log(defaults);
         /* =====> CONSTRUCTOR FOR STYLEBOX OBJECTS <===== */
         Sb = function (type) {
             var self = this;
@@ -130,12 +127,12 @@ var StyleBox = StyleBox || {};
 
         /* =====> THIS.INIT PRIVILEGED METHOD <===== */
         this.init = function () {
-            start = performance.now();  //=====> REMOVE <=====
+
             /* =====> POPULATE SETTINGS FROM DEFAULTS & OPTIONS <===== */
             set = hlp.extend(defaults, options);
 
-            console.log("set:");
-            console.log(set);
+            //console.log("set:");
+            //console.log(set);
 
             /* =====> OVERLAY <===== */
             dlg.overlay = new Sb().cls("MsgOverlay").css({
@@ -192,8 +189,8 @@ var StyleBox = StyleBox || {};
             /* =====> MESSAGE <===== */
             if (typeof set.message === 'function') {
                 msg = hlp.htmlEscape(set.message());
-                console.log("msg:");
-                console.log(msg);
+                //console.log("msg:");
+                //console.log(msg);
                 dlg.msgText = new Sb("span").cls("MsgText").html(hlp.htmlUnescape(msg)).append(dlg.body);
 
             } else {
@@ -278,6 +275,9 @@ var StyleBox = StyleBox || {};
                 document.addEventListener("keyup", keyup);
             }
 
+            //EVENTS-RETURN
+            document.addEventListener("keydown", keydown);
+
             /* =====> OVERRIDE WIDTH? <===== */
             n = parseInt(set.width, 10);
             if (!isNaN(n) && n === set.width && n.toString() === set.width.toString() && n > 0) {
@@ -295,14 +295,14 @@ var StyleBox = StyleBox || {};
 
         /* =====> beforeClose FUNCTION <===== */
         var beforeClose = function (callback) {
-                console.log("beforeClose"); //=====> REMOVE <=====
+                //console.log("beforeClose"); //=====> REMOVE <=====
                 if (set.onHide && typeof set.onHide === "function") {
                     var animate = set.onHide(dlg.dialog);
                     animate.eventCallback("onComplete", function () {
                         callback(true);
                     });
-                    console.log("beforeClose animation"); //=====> REMOVE <=====
-                    console.log(animate); //=====> REMOVE <=====
+                    //console.log("beforeClose animation"); //=====> REMOVE <=====
+                    //console.log(animate); //=====> REMOVE <=====
 
                     animate.play();
                 } else {
@@ -314,9 +314,9 @@ var StyleBox = StyleBox || {};
             close = function (caption) {
 
                 beforeClose(function (canClose) {
-                    console.log("callback called! " + canClose); //=====> REMOVE <=====
+                    //console.log("callback called! " + canClose); //=====> REMOVE <=====
                     if (canClose) {
-                        console.log("caption: " + caption); //=====> REMOVE <=====
+                        //console.log("caption: " + caption); //=====> REMOVE <=====
                         dlg.overlay.parentNode.removeChild(dlg.overlay);
                         dlg.dialog.parentNode.removeChild(dlg.dialog);
                         if (set.onClose && typeof set.onClose === "function") {
@@ -324,6 +324,7 @@ var StyleBox = StyleBox || {};
                         }
 
                         document.removeEventListener("keyup", keyup);
+                        document.removeEventListener("keydown", keydown);
                         window.removeEventListener("resize", centerChild);
                     }
                 });
@@ -375,8 +376,8 @@ var StyleBox = StyleBox || {};
                     icon = (set.icon[1] + " " + set.iconStyle[0]).trim();
                 }
 
-                console.log("icon:");
-                console.log(icon);
+                //console.log("icon:");
+                //console.log(icon);
 
                 return icon;
             },
@@ -398,8 +399,8 @@ var StyleBox = StyleBox || {};
                 }
                 obj3 = hlp.extend(obj1, obj2);
 
-                console.log("generateIconStyle:");
-                console.log(obj3);
+                //console.log("generateIconStyle:");
+                //console.log(obj3);
 
                 return obj3;
             },
@@ -430,6 +431,16 @@ var StyleBox = StyleBox || {};
         /* =====> keyup FUNCTION <===== */
             keyup = function (e) {
                 if (e.which === 27) {
+                    close();
+                }
+                return true;
+            },
+
+        /* =====> keydown FUNCTION <===== */
+            keydown = function (e) {
+                if (e.which === 13) {
+                    e.stopPropagation();
+                    e.preventDefault();
                     close();
                 }
                 return true;
@@ -673,7 +684,7 @@ var StyleBox = StyleBox || {};
                     backgroundColor: color,
                     borderColor: color
                 });
-                console.log("set MsgButton background color and border color to: " + color);
+                //console.log("set MsgButton background color and border color to: " + color);
                 TweenLite.set('.MsgClose', {
                     backgroundColor: color,
                     borderColor: color
@@ -761,8 +772,8 @@ var StyleBox = StyleBox || {};
                 }
 
                 // return final css object
-                console.log("css:");
-                console.log(css);
+                //console.log("css:");
+                //console.log(css);
                 return css;
             },
 
@@ -841,10 +852,7 @@ var StyleBox = StyleBox || {};
 
                 // Set focus to first message button
                 //dlg.bottom.focus();
-                end = performance.now();
-                time = end - start;
-                console.log("Execution Time:");
-                console.log(time);
+
             };
 
         return self.init();
@@ -1152,8 +1160,8 @@ var StyleBox = StyleBox || {};
     // Check to evaluate whether StyleBox exists in the global namespace - if not, assign window.StyleBox an object literal
 }(StyleBox = StyleBox || {}));
 
-console.log("StyleBox");
-console.log(StyleBox);
+//console.log("StyleBox");
+//console.log(StyleBox);
 
-console.log(window.navigator.userAgent);
+//console.log(window.navigator.userAgent);
 
